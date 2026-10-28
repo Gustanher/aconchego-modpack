@@ -1,10 +1,10 @@
-param([string]$OutDir = 'C:\claude\modpack')
+param([string]$OutDir = 'C:\claude\modpack', [string]$Version = '1.0.1')
 $ErrorActionPreference = 'Stop'
 $api = 'https://api.modrinth.com/v2'
 $q = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
 
 $wanted = @(
-  'sodium','iris','modernfix','ferrite-core','immediatelyfast','entityculling',
+  'sodium','iris','colorwheel','modernfix','ferrite-core','immediatelyfast','entityculling',
   'jei','jade','appleskin','xaeros-minimap','xaeros-world-map','mouse-tweaks','inventory-profiles-next',
   'sophisticated-backpacks','sophisticated-storage','carry-on','waystones','comforts','ambientsounds','sound-physics-remastered',
   'create','slice-and-dice','copycats','create-deco','create-enchantment-industry',
@@ -71,7 +71,7 @@ $files = foreach ($e in $selected.Values) {
 $index = [ordered]@{
   formatVersion = 1
   game = 'minecraft'
-  versionId = '1.0.0'
+  versionId = $Version
   name = 'Aconchego'
   summary = 'Vanilla+ cozy com Create, Farmer''s Delight e exploracao'
   files = @($files)
@@ -85,7 +85,7 @@ $json = $index | ConvertTo-Json -Depth 10
 [IO.File]::WriteAllText((Join-Path $work 'modrinth.index.json'), $json, (New-Object Text.UTF8Encoding $false))
 New-Item -ItemType Directory -Force $OutDir | Out-Null
 [IO.File]::WriteAllText((Join-Path $OutDir 'modrinth.index.json'), $json, (New-Object Text.UTF8Encoding $false))
-$out = Join-Path $OutDir 'Aconchego-1.0.0.mrpack'
+$out = Join-Path $OutDir "Aconchego-$Version.mrpack"
 Remove-Item $out -ErrorAction SilentlyContinue
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [IO.Compression.ZipFile]::CreateFromDirectory($work, $out)

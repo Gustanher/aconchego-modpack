@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "1.0.0",
+  "versionId": "1.0.1",
   "name": "Aconchego",
   "summary": "Vanilla+ cozy com Create, Farmer's Delight e exploracao",
   "files": [
@@ -34,6 +34,21 @@
         "https://cdn.modrinth.com/data/YL57xq9U/versions/KduFYu4t/iris-neoforge-1.8.14-beta.1%2Bmc1.21.1.jar"
       ],
       "fileSize": 2540723
+    },
+    {
+      "path": "mods/colorwheel-neoforge-1.3.0+mc1.21.1.jar",
+      "hashes": {
+        "sha1": "350a9476147f00e351745ae1c1446eefe706bd89",
+        "sha512": "1d2088d41f57cef08b8b9692a5f95427c34cf218e0e0fe20bc335e7a5cab9e37cea414b786070cc29947fbbe9e9dba1a4134f722c35b9ccbef60e2a075e352aa"
+      },
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/BzHgFoGz/versions/8rq5KP4U/colorwheel-neoforge-1.3.0%2Bmc1.21.1.jar"
+      ],
+      "fileSize": 514376
     },
     {
       "path": "mods/modernfix-neoforge-5.27.27+mc1.21.1.jar",
