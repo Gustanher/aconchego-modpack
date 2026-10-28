@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "game": "minecraft",
-  "versionId": "1.0.1",
+  "versionId": "1.0.2",
   "name": "Aconchego",
   "summary": "Vanilla+ cozy com Create, Farmer's Delight e exploracao",
   "files": [
@@ -874,6 +874,51 @@
         "https://cdn.modrinth.com/data/8BmcQJ2H/versions/Grwn5rUB/geckolib-neoforge-1.21.1-4.9.3.jar"
       ],
       "fileSize": 634531
+    },
+    {
+      "path": "shaderpacks/ComplementaryReimagined_r5.9.3.zip",
+      "hashes": {
+        "sha1": "838139b54cddb56b2e83cd260d8efd960ac536d6",
+        "sha512": "45304b1d7862afdb2177b7e6226fc9c6737911d17a4ad46cc9c519ca4deb935f05072cd337cd8b19a15bb8062b57b54eceec7bdee4cd572d94858e2946d37d85"
+      },
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/HVnmMxH1/versions/Bqen1mJX/ComplementaryReimagined_r5.9.3.zip"
+      ],
+      "fileSize": 553397
+    },
+    {
+      "path": "shaderpacks/BSL_v10.1.8.zip",
+      "hashes": {
+        "sha1": "e89818c8827d0131c102fb480c3c3446624db0df",
+        "sha512": "94a3c25d6820868db624e11347873e6b572e7cd571967d9ac6f4690ca5d37ca302a7645d85eec800e0654541e3825fba14d37b5a25d3996aaf038178552be26f"
+      },
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/Q1vvjJYV/versions/Y68yiql9/BSL_v10.1.8.zip"
+      ],
+      "fileSize": 1134153
+    },
+    {
+      "path": "shaderpacks/Bliss_v2.1.2_(Chocapic13_Shaders_edit).zip",
+      "hashes": {
+        "sha1": "ded6c8a98305f8aff90ef781e7585b33b8452cfd",
+        "sha512": "dafc60be4980ec40f40edc0f2625cb0976f3c9ce5ed86383146a120480826bb1de70ef5e38b7f1437294ed4d38c6ef3c82ebef0ae4e00b8cee165788c9c18280"
+      },
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/ZvMtQlho/versions/kC2Y8q1P/Bliss_v2.1.2_%28Chocapic13_Shaders_edit%29.zip"
+      ],
+      "fileSize": 1791406
     }
   ],
   "dependencies": {

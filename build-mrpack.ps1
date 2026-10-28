@@ -1,4 +1,4 @@
-param([string]$OutDir = 'C:\claude\modpack', [string]$Version = '1.0.1')
+param([string]$OutDir = 'C:\claude\modpack', [string]$Version = '1.0.2')
 $ErrorActionPreference = 'Stop'
 $api = 'https://api.modrinth.com/v2'
 $q = '?loaders=' + [uri]::EscapeDataString('["neoforge"]') + '&game_versions=' + [uri]::EscapeDataString('["1.21.1"]')
@@ -15,6 +15,9 @@ $wanted = @(
   'yungs-better-nether-fortresses','yungs-better-end-island','yungs-bridges','yungs-extras',
   'ribbits','natures-compass','friends-and-foes-forge','naturalist'
 )
+
+# shader packs aren't tied to a game version, so only the newest Iris release is taken
+$shaders = @('complementary-reimagined','bsl-shaders','bliss-shader')
 
 $selected = [ordered]@{}   # project_id -> @{project; version}
 $pinned = @{}              # project_id -> version_id required by someone
@@ -68,13 +71,29 @@ $files = foreach ($e in $selected.Values) {
   }
 }
 
+$sq = '?loaders=' + [uri]::EscapeDataString('["iris"]')
+$shaderFiles = foreach ($s in $shaders) {
+  $r = Invoke-RestMethod "$api/project/$s/version$sq"
+  $v = @($r) | Where-Object { $_.version_type -eq 'release' } | Select-Object -First 1
+  $f = $v.files | Where-Object { $_.primary } | Select-Object -First 1
+  if (-not $f) { $f = $v.files[0] }
+  "shader: {0,-26} {1}" -f $s, $v.version_number | Write-Host
+  [ordered]@{
+    path = "shaderpacks/$($f.filename)"
+    hashes = [ordered]@{ sha1 = $f.hashes.sha1; sha512 = $f.hashes.sha512 }
+    env = [ordered]@{ client = 'required'; server = 'unsupported' }
+    downloads = @($f.url)
+    fileSize = $f.size
+  }
+}
+
 $index = [ordered]@{
   formatVersion = 1
   game = 'minecraft'
   versionId = $Version
   name = 'Aconchego'
   summary = 'Vanilla+ cozy com Create, Farmer''s Delight e exploracao'
-  files = @($files)
+  files = @($files) + @($shaderFiles)
   dependencies = [ordered]@{ minecraft = '1.21.1'; neoforge = $neo }
 }
 
